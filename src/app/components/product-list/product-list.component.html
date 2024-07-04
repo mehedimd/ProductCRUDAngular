@@ -1,0 +1,47 @@
+<div class="row p-5">
+  <div class="col-md-10 offset-md-1">
+    <div>
+      <input
+        type="button"
+        value="Create Product"
+        routerLink="/product/add"
+        class="btn btn-primary"
+      />
+    </div>
+    <table class="table table-bordered mt-2">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ProductName</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(product of allProducts; track product.productId){
+        <tr>
+          <td>{{ product.productId }}</td>
+          <td>{{ product.productName }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.category }}</td>
+          <td>
+            <input
+              type="button"
+              value="Edit"
+              class="btn btn-success me-3"
+              routerLink="/product/add/{{ product.productId }}"
+            />
+            <input
+              type="button"
+              value="Delete"
+              class="btn btn-danger"
+              (click)="DeleteProduct(product.productId)"
+            />
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

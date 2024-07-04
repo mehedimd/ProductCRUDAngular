@@ -1,0 +1,59 @@
+<div class="container-fluid p-5">
+  <form [formGroup]="productForm" (ngSubmit)="productSubmit()">
+    <div class="row">
+      <div class="title text-center text-primary">
+        @if(isEdit){
+        <h3>Product Update</h3>
+        }@else {
+        <h3>Product Create</h3>
+        }
+      </div>
+      <div class="col-md-6 offset-md-3 shadow-lg p-3">
+        @if(isEdit){
+        <div class="col-md">
+          <span>Product ID:</span>
+          <input
+            type="number"
+            readonly
+            class="form-control"
+            formControlName="productId"
+          />
+        </div>
+        }
+        <div class="col-md">
+          <span>Product Name:</span>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="productName"
+          />
+        </div>
+        <div class="col-md">
+          <span>Product Price:</span>
+          <input type="text" class="form-control" formControlName="price" />
+        </div>
+        <div class="col-md">
+          <span>Product Category:</span>
+          <input type="text" class="form-control" formControlName="category" />
+        </div>
+        <div class="col-md mt-2">
+          @if(isEdit){
+          <input
+            type="submit"
+            class="btn btn-success"
+            value="Update"
+            [disabled]="productForm.invalid"
+          />
+          } @else{
+          <input
+            type="submit"
+            class="btn btn-primary"
+            value="Create"
+            [disabled]="productForm.invalid"
+          />
+          }
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
